@@ -20,22 +20,31 @@ public class AutomationFixture extends BaseSteps {
 
     @And("I enter username {string}")
     public void iEnterUsername(String arg0) {
-        driver.findElement(By.xpath("//tagName[@Attribute='value']")).sendKeys();
+//        driver.findElement(By.xpath("//tagName[@Attribute='value']")).sendKeys();
+        driver.findElement(By.xpath("//input[@id='username']")).sendKeys(arg0);
+
     }
 
     @And("I enter password {string}")
     public void iEnterPassword(String arg0) {
-        driver.findElement(By.xpath("//tagName[@Attribute='value']")).sendKeys();
+        driver.findElement(By.xpath("//input[@id='password']")).sendKeys(arg0);
     }
 
 
     @When("I verify button {string} is present")
     public void iVerifyButtonIsPresent(String arg0) {
+        Boolean buttonSubmitvalue = driver.findElement(By.xpath("//button[@type='submit']")).isDisplayed();
+//                .isEnabled();
+        System.out.println("Submit button is present :" + buttonSubmitvalue);
 
     }
 
     @Then("I click on button {string}")
     public void iClickOnButton(String arg0) {
-
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        String alertMessage = driver.findElement(By.xpath("//div[@role='alert']")).getText();
+        if(alertMessage.length()>0){
+            System.out.println("Displayed Alert message: "+ alertMessage);
+        }
     }
 }

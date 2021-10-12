@@ -16,7 +16,7 @@ public class BaseSteps {
 
     public BaseSteps(){
 //mac driver path
-        System.setProperty("webdriver.chrome.driver", "/Users/anil/Documents/swdtools/driver/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/Users/anil/Documents/swdtools/driver/chrome94/chromedriver");
 
 //        if(System.getProperty("os.name").contains("Win")) {
 //            System.setProperty("webdriver.chrome.driver", "/Users/anil/Documents/swdtools/driver/chromedriver.exe");
