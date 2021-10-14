@@ -1,0 +1,49 @@
+
+
+1 HTML WebDriver
+
+WebDriver driver = new ChromeDriver();
+
+//mac driver path
+        System.setProperty("webdriver.chrome.driver", "/Users/anil/Documents/swdtools/driver/chrome94/chromedriver");
+
+//        if(System.getProperty("os.name").contains("Win")) {
+//            System.setProperty("webdriver.chrome.driver", "/Users/anil/Documents/swdtools/driver/chromedriver.exe");
+//        } else {
+//            System.setProperty("webdriver.chrome.driver", "/Users/anil/Documents/swdtools/driver/chromedriver");
+//        }
+
+
+2.  Navigating
+Navigate to the page
+driver.get("https://www.google.com");
+
+To ensure the page is fully loaded, use wait
+
+
+3. Interacting with the page
+a] Finding elements
+For example, element is defined as
+<input type = "text" name= "passwd" id= "passwd-id" />
+
+
+WebElement element;
+
+element = driver.findElement(By.id("passwd-id"));
+element = driver.findElement(By.name("passwd"));
+element = driver.findElement(By.xpath("//input[@id='passwd-id']"));
+
+= If nothing found, a NoSuchElementException will be thrown.
+
+b] Entering text
+text field:
+element.sendKeys("some text");
+
+=You can simulate pressing arrow keys by using the "Keys" class /
+= append text
+element.sendKeys("and some" , Keys.ARROW_DOWN);
+
+= clear the field
+element.clear();
+
+c]
