@@ -20,6 +20,13 @@ driver.get("https://www.google.com");
 
 To ensure the page is fully loaded, use wait
 
+Alternative
+driver.navigate().to("https://www.google.com");
+=navigate  interface exposes the ability to move backwards and forwards in the browsers history.**Here the behaviour is browser specific.
+driver.navigate.forward();
+driver.navigate.backward();
+
+
 
 3. Interacting with the page
 a] Finding elements
@@ -46,4 +53,39 @@ element.sendKeys("and some" , Keys.ARROW_DOWN);
 = clear the field
 element.clear();
 
-c]
+c] Interact with drop down field - multiselect drop down field
+Select select = new Select(driver.findElement(By.xpath("//select")));
+select.deselectAll();
+select.selectByVisibleText("India");
+
+
+d] button click
+driver.findElement(By.id("submit")).click();
+== alternative for form submission.
+element.submit(); // finds enclosing form, and submit, if not found will throw NoSuchElementException
+
+
+4. Moving between windows and frames
+a] Moving between named windows
+"switchTo" method
+driver.switchTo().window("windowName");
+
+== How do you know the window's name?
+<a href="somewhere.html" target= "windowName" > Click here to open a new window</a>
+
+== Alternatively you can pass a "window handle" to the "switchTo().window()" method.
+Using this we can iterate over every open window.
+
+for (String handle: driver.getWindowHandles()){
+driver.switchTo().window(handle);
+}
+
+b] Switching to Frames(or into iframes)
+driver.switchTo().frame("frameName");
+
+= Its possible to access subframes by separating the path with a dot, and you can specify the frame by its index too.
+driver.switchTo().frame("frameName.0.child");
+= All frames are evaluated as if from *top*.
+
+
+
